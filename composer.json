@@ -2,9 +2,10 @@
     "name": "calculator/test",
     "description": "An exemple of phpunits test with a calculator",
     "license": "MIT",
-    "require": {},
+    "require": {
+        "phpunit/phpunit": "^7"
+    },
     "require-dev": {
-        "phpunit/phpunit": "^9.1"
     },
     "autoload": {
         "psr-4": {
