@@ -2,6 +2,8 @@
 
 namespace App;
 
+use DivisionByZeroError;
+
 class Calculator
 {
     public function add($a, $b)
@@ -21,6 +23,11 @@ class Calculator
 
     public function div($a, $b)
     {
-        return $a/$b;
+        try {
+            return  $a/$b;
+        }
+        catch(DivisionByZeroError $e){
+            echo $e->getMessage();
+        }
     }
 }
