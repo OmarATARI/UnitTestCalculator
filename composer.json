@@ -2,19 +2,14 @@
     "name": "calculator/test",
     "description": "An exemple of phpunits test with a calculator",
     "license": "MIT",
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
     "require": {
         "phpunit/phpunit": "^7"
     },
     "require-dev": {
-    },
-    "autoload": {
-        "psr-4": {
-            "App\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "App\\Tests\\": "tests/"
-        }
     }
 }
