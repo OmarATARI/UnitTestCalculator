@@ -7,46 +7,50 @@ use PHPUnit\Framework\TestCase;
 
 final class UserTest extends TestCase
 {
+    private $user;
+
+    public function setUp(): void
+    {
+        $this->user = new User('atari.omar@gmail.com', 24);
+    }
+
     public function testIsValid()
     {
         /**
          * DEBUG with
          * fwrite(STDERR, print_r('message', TRUE));
          */
-        $user = new User('atari.omar@gmail.com', 24);
-        $user->setFirstname('Omar');
-        $user->setLastname('ATARI');
-        $this->assertNotFalse($user->isValid());
+        $this->user->setFirstname('Omar');
+        $this->user->setLastname('ATARI');
+        $this->assertNotFalse($this->user->isValid());
     }
 
     public function testHasInvalidEmail()
     {
-        $user = new User('atari.omar', 24);
-        $user->setFirstname('Omar');
-        $user->setLastname('ATARI');
-        $this->assertFalse($user->isValid());
+        $this->user->setFirstname('Omar');
+        $this->user->setLastname('ATARI');
+        $this->user->setEmail('gfdgsdfg');
+        $this->assertFalse($this->user->isValid());
     }
 
 
     public function testHasInvalidAge()
     {
-        $user = new User('atari.omar@gmail.com', 11);
-        $user->setFirstname('Omar');
-        $user->setLastname('ATARI');
-        $this->assertFalse($user->isValid());
+        $this->user->setAge(11);
+        $this->user->setFirstname('Omar');
+        $this->user->setLastname('ATARI');
+        $this->assertFalse($this->user->isValid());
     }
 
     public function testHasUnspecifiedFirstName()
     {
-        $user = new User('atari.omar@gmail.com', 24);
-        $user->setLastname('ATARI');
-        $this->assertFalse($user->isValid());
+        $this->user->setLastname('ATARI');
+        $this->assertFalse($this->user->isValid());
     }
 
     public function testHasUnspecifiedLastName()
     {
-        $user = new User('atari.omar@gmail.com', 24);
-        $user->setFirstname('Omar');
-        $this->assertFalse($user->isValid());
+        $this->user->setFirstname('Omar');
+        $this->assertFalse($this->user->isValid());
     }
 }
